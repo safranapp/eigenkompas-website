@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="nl" class="scroll-smooth"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EigenKompas · Verzuim · Eigenaarschap · Preventie</title>
+<meta name="description" content="EigenKompas: adviseurs verzuim, cultuur &amp; leiderschap én bedrijfsartsen onder één dak. Persoonlijke, niet-bureaucratische verzuimbegeleiding gericht op eigenaarschap. Jij bepaalt de richting.">
+<meta name="theme-color" content="#2E5B40">
+<link rel="canonical" href="https://www.eigenkompas.nl/">
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon-180.png">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:site_name" content="EigenKompas">
+<meta property="og:title" content="EigenKompas · Verzuim · Eigenaarschap · Preventie">
+<meta property="og:description" content="Adviseurs verzuim, cultuur &amp; leiderschap én bedrijfsartsen onder één dak. Persoonlijke verzuimbegeleiding gericht op eigenaarschap. Jij bepaalt de richting.">
+<meta property="og:url" content="https://www.eigenkompas.nl/">
+<meta property="og:image" content="https://www.eigenkompas.nl/assets/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EigenKompas · Verzuim · Eigenaarschap · Preventie">
+<meta name="twitter:description" content="Adviseurs verzuim, cultuur &amp; leiderschap én bedrijfsartsen onder één dak. Jij bepaalt de richting.">
+<meta name="twitter:image" content="https://www.eigenkompas.nl/assets/img/og-image.jpg">
+<!--
+  REFERENCE PAGE for the eigenkompas-design system.
+  Palette sourced from the live Eigenkompas brand:
+    green #2E5B40 (+light #3D7454) · mint #6EC68A · navy #1B2D4F · brown #8B7251
+    page #FAFAF8 · cream #F5F1EB · white #FFFFFF · ink #1A1A2E · muted #6B7280 · border #E5E0D8
+  Typography stays Cormorant Garamond (display) + Jost (body/labels).
+  Demonstrates: sticky nav, hero with blob + green→navy feature card, stat bar,
+  grid-of-cards services, navy testimonials chapter, portfolio grid, navy footer.
+  Re-theme by swapping the palette hexes + the two font families.
+-->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* === DESIGN TOKENS === */
+  body { font-family: 'Jost', sans-serif; background-color: #FAFAF8; color: #1A1A2E; }
+  h1,h2,h3,h4,h5,h6,.serif { font-family: 'Cormorant Garamond', serif; }
+  .marquee-container { mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); }
+  @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  .animate-scroll { animation: scroll 30s linear infinite; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #FAFAF8; }
+  ::-webkit-scrollbar-thumb { background: #8B7251; }
+  /* zodat de sticky nav de aangelinkte koppen niet bedekt */
+  section[id], footer[id] { scroll-margin-top: 96px; }
+  /* === MOTION (ingetogen) === */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s cubic-bezier(.2,.6,.2,1), transform .7s cubic-bezier(.2,.6,.2,1); }
+    .reveal.in { opacity: 1; transform: none; }
+    .hero-enter > * { opacity: 0; transform: translateY(20px); animation: ekUp .9s cubic-bezier(.2,.6,.2,1) forwards; }
+    .hero-enter > *:nth-child(1) { animation-delay: .10s; }
+    .hero-enter > *:nth-child(2) { animation-delay: .22s; }
+    .hero-enter > *:nth-child(3) { animation-delay: .36s; }
+    .hero-enter > *:nth-child(4) { animation-delay: .50s; }
+    @keyframes ekUp { to { opacity: 1; transform: none; } }
+    .hero-photo { animation: ekHeroZoom 7s ease-out forwards; }
+    @keyframes ekHeroZoom { from { transform: scale(1.06); } to { transform: scale(1); } }
+  }
+  /* === HERO IMAGE === */
+  .hero-photo {
+    background-image: url('assets/img/richting-hero.jpg');
+    background-size: cover;
+    background-position: center 50%;
+    /* fade the photo into the page on every edge */
+    -webkit-mask-image: radial-gradient(125% 120% at 57% 50%, #000 30%, rgba(0,0,0,0.6) 60%, transparent 85%);
+            mask-image: radial-gradient(125% 120% at 57% 50%, #000 30%, rgba(0,0,0,0.6) 60%, transparent 85%);
+  }
+  /* cream scrim keeps the left-hand text crisp without washing the central figure */
+  .hero-scrim {
+    background: linear-gradient(to right, #FAFAF8 0%, rgba(250,250,248,0.90) 18%, rgba(250,250,248,0.40) 38%, transparent 56%);
+  }
+</style>
+</head>
+<body class="antialiased font-light tracking-wide selection:bg-[#2E5B40] selection:text-white overflow-x-hidden">
+
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 w-full px-6 md:px-16 py-6 flex justify-between items-center bg-[#FAFAF8]/90 backdrop-blur-xl border-b border-[#E5E0D8] transition-all duration-300">
+    <a href="#" class="flex items-center gap-2.5 font-serif text-lg md:text-xl font-normal tracking-[0.12em] text-[#1A1A2E] uppercase">
+      <svg viewBox="0 0 64 64" class="w-7 h-7 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><polygon points="32,32 32,4 40,24" fill="#2E5B40"/><polygon points="32,32 40,24 60,32" fill="#6EC68A"/><polygon points="32,32 60,32 40,40" fill="#2E5B40"/><polygon points="32,32 40,40 32,60" fill="#6EC68A"/><polygon points="32,32 32,60 24,40" fill="#2E5B40"/><polygon points="32,32 24,40 4,32" fill="#6EC68A"/><polygon points="32,32 4,32 24,24" fill="#2E5B40"/><polygon points="32,32 24,24 32,4" fill="#6EC68A"/><circle cx="32" cy="32" r="3.2" fill="#1B2D4F"/></svg>
+      <span>EIGEN<span class="italic font-light normal-case text-base">kompas</span></span>
+    </a>
+    <div class="hidden lg:flex items-center space-x-8 text-xs font-normal tracking-[0.18em] text-[#1A1A2E] uppercase">
+      <a href="#werkgevers" class="hover:opacity-60 transition-opacity relative group pb-1">Voor werkgevers<span class="absolute bottom-0 left-0 w-0 h-[1px] bg-[#2E5B40] transition-all duration-300 group-hover:w-full"></span></a>
+      <a href="#werkwijze" class="hover:opacity-60 transition-opacity relative group pb-1">Werkwijze<span class="absolute bottom-0 left-0 w-0 h-[1px] bg-[#2E5B40] transition-all duration-300 group-hover:w-full"></span></a>
+      <a href="#services" class="hover:opacity-60 transition-opacity relative group pb-1">Diensten<span class="absolute bottom-0 left-0 w-0 h-[1px] bg-[#2E5B40] transition-all duration-300 group-hover:w-full"></span></a>
+      <a href="#over" class="hover:opacity-60 transition-opacity relative group pb-1">Over ons<span class="absolute bottom-0 left-0 w-0 h-[1px] bg-[#2E5B40] transition-all duration-300 group-hover:w-full"></span></a>
+      <a href="#contact" class="hover:opacity-60 transition-opacity relative group pb-1">Contact<span class="absolute bottom-0 left-0 w-0 h-[1px] bg-[#2E5B40] transition-all duration-300 group-hover:w-full"></span></a>
+      <a href="#contact" class="ml-2 px-8 py-4 bg-[#2E5B40] text-white border border-[#2E5B40] hover:bg-transparent hover:text-[#2E5B40] transition-all duration-300">Plan een kennismaking</a>
+    </div>
+    <button id="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu openen" class="lg:hidden text-[#1A1A2E] flex items-center justify-center"><iconify-icon icon="solar:hamburger-menu-linear" width="28" height="28"></iconify-icon></button>
+    <!-- Mobiel menu -->
+    <div id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 right-0 bg-[#FAFAF8] border-b border-[#E5E0D8] px-6 py-8 shadow-lg shadow-[#1B2D4F]/5">
+      <div class="flex flex-col space-y-6 text-xs font-normal tracking-[0.18em] text-[#1A1A2E] uppercase">
+        <a href="#werkgevers" class="hover:text-[#2E5B40] transition-colors">Voor werkgevers</a>
+        <a href="#werkwijze" class="hover:text-[#2E5B40] transition-colors">Werkwijze</a>
+        <a href="#services" class="hover:text-[#2E5B40] transition-colors">Diensten</a>
+        <a href="#over" class="hover:text-[#2E5B40] transition-colors">Over ons</a>
+        <a href="#contact" class="hover:text-[#2E5B40] transition-colors">Contact</a>
+        <a href="#contact" class="mt-2 px-8 py-4 bg-[#2E5B40] text-white text-center border border-[#2E5B40] hover:bg-transparent hover:text-[#2E5B40] transition-all duration-300">Plan een kennismaking</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="relative w-full min-h-[92vh] flex items-center px-6 md:px-16 py-24 overflow-hidden">
+    <!-- full-bleed hero photo, faded into the page on all edges -->
+    <div class="hero-photo absolute inset-0 z-0" aria-hidden="true"></div>
+    <!-- cream scrim for left-hand text legibility -->
+    <div class="hero-scrim absolute inset-0 z-[1]" aria-hidden="true"></div>
+    <!-- soft bottom fade into the next section -->
+    <div class="absolute inset-x-0 bottom-0 h-40 z-[1] bg-gradient-to-t from-[#FAFAF8] to-transparent" aria-hidden="true"></div>
+
+    <div class="max-w-7xl mx-auto w-full">
+      <div class="hero-enter max-w-xl space-y-10 relative z-10">
+        <p class="text-xs font-normal tracking-[0.28em] uppercase text-[#2E5B40]">Adviseurs verzuim, cultuur &amp; leiderschap én bedrijfsartsen onder één dak</p>
+        <h1 class="font-serif text-6xl md:text-8xl lg:text-[6rem] text-[#1A1A2E] leading-[0.95] tracking-tight font-light">
+          Jij bepaalt de<br><span class="italic text-[#2E5B40]">richting.</span>
+        </h1>
+        <p class="max-w-md text-sm md:text-base text-[#1A1A2E]/70 font-light leading-loose">
+          Geen anoniem loket. Geen standaardadvies. Een hecht team van adviseurs en bedrijfsartsen dat direct met je meedenkt, met eigenaarschap als fundament.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+          <a href="#contact" class="inline-block px-9 py-5 bg-[#2E5B40] text-white text-xs font-normal tracking-[0.2em] uppercase border border-[#2E5B40] hover:bg-transparent hover:text-[#2E5B40] transition-all duration-300 w-full sm:w-auto text-center">Plan een kennismaking</a>
+          <a href="#werkwijze" class="inline-block px-9 py-5 bg-transparent text-[#1A1A2E] text-xs font-normal tracking-[0.2em] uppercase border border-[#2E5B40] hover:bg-[#2E5B40] hover:text-white transition-all duration-300 w-full sm:w-auto text-center">Onze werkwijze</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Stats Bar -->
+  <section class="border-y border-[#E5E0D8] bg-[#FAFAF8]">
+    <div class="grid grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-[#E5E0D8]">
+      <div class="py-12 px-6 text-center hover:bg-[#F5F1EB] transition-colors duration-300"><span class="font-serif text-5xl md:text-6xl text-[#2E5B40] font-light leading-none block">20-40%</span><span class="text-xs uppercase tracking-[0.22em] text-[#6B7280] mt-4 block">Kortere verzuimduur</span></div>
+      <div class="py-12 px-6 text-center hover:bg-[#F5F1EB] transition-colors duration-300"><span class="font-serif text-5xl md:text-6xl text-[#2E5B40] font-light leading-none block">2-3%</span><span class="text-xs uppercase tracking-[0.22em] text-[#6B7280] mt-4 block">Verzuimdaling binnen 2 jaar</span></div>
+      <div class="py-12 px-6 text-center hover:bg-[#F5F1EB] transition-colors duration-300"><span class="font-serif text-5xl md:text-6xl text-[#2E5B40] font-light leading-none block">9,2</span><span class="text-xs uppercase tracking-[0.22em] text-[#6B7280] mt-4 block">Klanttevredenheid</span></div>
+      <div class="py-12 px-6 text-center hover:bg-[#F5F1EB] transition-colors duration-300"><span class="font-serif text-5xl md:text-6xl text-[#2E5B40] font-light leading-none block">15+ jaar</span><span class="text-xs uppercase tracking-[0.22em] text-[#6B7280] mt-4 block">Ervaring in verzuim &amp; HR</span></div>
+    </div>
+  </section>
+
+  <!-- Voor werkgevers -->
+  <section id="werkgevers" class="py-24 px-6 md:px-16 bg-[#F5F1EB]">
+    <div class="max-w-7xl mx-auto">
+      <p class="text-xs uppercase tracking-[0.3em] text-[#2E5B40] mb-8">Voor werkgevers</p>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-stretch">
+        <!-- Argument -->
+        <div class="lg:col-span-7 space-y-7">
+          <h2 class="font-serif text-4xl md:text-5xl font-light text-[#1A1A2E] leading-[1.1] tracking-tight">Van verzuim naar <em class="italic text-[#2E5B40]">vooruitgang.</em></h2>
+          <p class="text-sm md:text-base text-[#1A1A2E]/70 font-light leading-loose">Elke verzuimdag kost gemiddeld <span class="text-[#1A1A2E] font-normal">€400 tot €450</span>. Toch worstelen veel werkgevers met trage arbodiensten, onduidelijke adviezen en het gevoel dat ze er alleen voor staan. In de praktijk wordt er veel gedaan aan symptoombestrijding en het volgen van wet- en regelgeving, terwijl de daadwerkelijke oorzaak van het verzuim onopgelost blijft. Wij doen dit anders.</p>
+          <p class="text-sm md:text-base text-[#1A1A2E]/70 font-light leading-loose">Wij richten ons op de <span class="text-[#1A1A2E] font-normal">daadwerkelijke oorzaak</span>. We combineren de medische expertise van de bedrijfsarts met de praktische begeleiding van de adviseur verzuim, cultuur &amp; leiderschap, zodat jij als werkgever er niet alleen voor staat.</p>
+          <ul class="grid sm:grid-cols-2 gap-x-8 gap-y-5 pt-3">
+            <li class="flex items-start gap-3 text-sm text-[#1A1A2E]/80 font-light leading-relaxed"><iconify-icon icon="solar:check-circle-linear" class="text-[#2E5B40] mt-0.5 shrink-0" width="18"></iconify-icon><span>Medische expertise gecombineerd met begeleiding op mens en organisatie</span></li>
+            <li class="flex items-start gap-3 text-sm text-[#1A1A2E]/80 font-light leading-relaxed"><iconify-icon icon="solar:check-circle-linear" class="text-[#2E5B40] mt-0.5 shrink-0" width="18"></iconify-icon><span>Eén vast aanspreekpunt, geen doorverbinden of wachttijden</span></li>
+            <li class="flex items-start gap-3 text-sm text-[#1A1A2E]/80 font-light leading-relaxed"><iconify-icon icon="solar:check-circle-linear" class="text-[#2E5B40] mt-0.5 shrink-0" width="18"></iconify-icon><span>Proactief: wij handelen voordat problemen ontstaan</span></li>
+            <li class="flex items-start gap-3 text-sm text-[#1A1A2E]/80 font-light leading-relaxed"><iconify-icon icon="solar:check-circle-linear" class="text-[#2E5B40] mt-0.5 shrink-0" width="18"></iconify-icon><span>Duurzame oplossingen en meer rust in je organisatie</span></li>
+          </ul>
+          <div class="pt-4">
+            <a href="#services" class="inline-block px-9 py-5 bg-[#2E5B40] text-white text-xs font-normal tracking-[0.2em] uppercase border border-[#2E5B40] hover:bg-transparent hover:text-[#2E5B40] transition-all duration-300">Meer over onze dienstverlening</a>
+          </div>
+        </div>
+        <!-- Quote panel -->
+        <div class="lg:col-span-5">
+          <div class="h-full flex flex-col border border-[#E5E0D8] overflow-hidden">
+            <div class="flex-1 min-h-0 bg-[#F5F1EB] flex overflow-hidden">
+              <img src="assets/img/werkgevers.png" alt="Samen de richting bepalen" class="w-full h-full object-contain object-bottom" onerror="this.closest('div').style.display='none'">
+            </div>
+            <figure class="bg-[#1B2D4F] p-6 md:p-7">
+              <div class="font-serif text-3xl text-[#6EC68A] opacity-60 leading-none mb-2">&ldquo;</div>
+              <blockquote class="font-serif text-sm md:text-base font-light italic text-white leading-relaxed mb-4">EigenKompas brengt rust, richting en regie terug in onze organisatie. We hebben geleerd om van het verleden te leren en ons op de toekomst te richten.</blockquote>
+              <figcaption>
+                <p class="text-[0.6rem] uppercase tracking-[0.2em] text-[#6EC68A]">HR Manager</p>
+                <p class="text-[0.55rem] uppercase tracking-widest text-white/40 mt-1">Klant van EigenKompas</p>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Onze werkwijze -->
+  <section id="werkwijze" class="py-24 px-6 md:px-16 bg-[#FAFAF8] border-b border-[#E5E0D8]">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-16 max-w-2xl">
+        <p class="text-xs uppercase tracking-[0.3em] text-[#2E5B40] mb-6">Onze werkwijze</p>
+        <h2 class="font-serif text-4xl md:text-5xl font-light text-[#1A1A2E] leading-[1.1] tracking-tight">Samen naar <em class="italic text-[#2E5B40]">duurzame ontwikkeling.</em></h2>
+        <p class="mt-6 text-sm md:text-base text-[#1A1A2E]/70 font-light leading-loose">Wij werken in vier duidelijke stappen. Van inzicht naar borging, met eigenaarschap als fundament.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+        <div class="relative border-t border-[#E5E0D8] pt-8">
+          <span class="absolute -top-[5px] left-0 w-2.5 h-2.5 bg-[#2E5B40]"></span>
+          <span class="font-serif text-5xl text-[#2E5B40] font-light leading-none block mb-5">01</span>
+          <h3 class="font-serif text-2xl text-[#1A1A2E] font-normal mb-3">Inzicht</h3>
+          <p class="text-sm text-[#6B7280] font-light leading-loose">We brengen de situatie en behoeften helder in kaart.</p>
+        </div>
+        <div class="relative border-t border-[#E5E0D8] pt-8">
+          <span class="absolute -top-[5px] left-0 w-2.5 h-2.5 bg-[#2E5B40]"></span>
+          <span class="font-serif text-5xl text-[#2E5B40] font-light leading-none block mb-5">02</span>
+          <h3 class="font-serif text-2xl text-[#1A1A2E] font-normal mb-3">Richting bepalen</h3>
+          <p class="text-sm text-[#6B7280] font-light leading-loose">Samen bepalen we de koers en wat echt belangrijk is.</p>
+        </div>
+        <div class="relative border-t border-[#E5E0D8] pt-8">
+          <span class="absolute -top-[5px] left-0 w-2.5 h-2.5 bg-[#2E5B40]"></span>
+          <span class="font-serif text-5xl text-[#2E5B40] font-light leading-none block mb-5">03</span>
+          <h3 class="font-serif text-2xl text-[#1A1A2E] font-normal mb-3">Structuur &amp; begeleiding</h3>
+          <p class="text-sm text-[#6B7280] font-light leading-loose">We creëren rust en structuur en begeleiden de juiste stappen naar herstel en groei.</p>
+        </div>
+        <div class="relative border-t border-[#E5E0D8] pt-8">
+          <span class="absolute -top-[5px] left-0 w-2.5 h-2.5 bg-[#2E5B40]"></span>
+          <span class="font-serif text-5xl text-[#2E5B40] font-light leading-none block mb-5">04</span>
+          <h3 class="font-serif text-2xl text-[#1A1A2E] font-normal mb-3">Groei &amp; borging</h3>
+          <p class="text-sm text-[#6B7280] font-light leading-loose">We zorgen voor duurzame ontwikkeling en borgen wat werkt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mentaal verzuim in Nederland (navy insight-chapter) -->
+  <section id="mentaal-verzuim" class="py-24 px-6 md:px-16 bg-[#1B2D4F]">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div class="lg:col-span-5">
+          <p class="text-xs uppercase tracking-[0.3em] text-[#6EC68A] mb-6">Mentaal verzuim in Nederland</p>
+          <h2 class="font-serif text-4xl md:text-5xl font-light text-white leading-[1.1] tracking-tight">De <em class="italic">stille kostenpost</em> die snel om actie vraagt.</h2>
+        </div>
+        <div class="lg:col-span-7 space-y-6">
+          <p class="text-sm md:text-base text-white/70 font-light leading-loose">Mentaal verzuim is in Nederland uitgegroeid tot dé grootste oorzaak van langdurig ziekteverzuim. Klachten als stress, burn-out en overbelasting zijn vaak het zichtbare topje; daaronder spelen werkdruk, onduidelijkheid en bedrijfscultuur. Wie psychische hulp nodig heeft, komt al snel op een wachtlijst bij de reguliere GGZ. De wettelijke Treeknorm van 14 weken wordt structureel overschreden: in 2025 wachtte bijna de helft van alle aanmeldingen langer dan dat. Tijdens die maanden gaat het verzuim onverminderd door, krijgt de medewerker geen passende behandeling en lopen de kosten voor de werkgever op.</p>
+          <p class="text-sm md:text-base text-white/70 font-light leading-loose">Bij EigenKompas schakelen we direct. Dankzij onze connecties met coaches en psychologen heeft een medewerker binnen 2 weken een gesprek, daar waar de reguliere GGZ maanden uitkomt. Zo combineren we medische én organisatorische expertise om niet alleen de klacht aan te pakken, maar ook de oorzaak, zodat herstel duurzaam is en terugval wordt voorkomen.</p>
+        </div>
+      </div>
+
+      <div class="mt-16 grid md:grid-cols-2 border border-white/10">
+        <div class="p-10 md:p-12 border-b md:border-b-0 md:border-r border-white/10">
+          <p class="text-[0.65rem] uppercase tracking-[0.25em] text-white/50 mb-10">Zonder passende aanpak</p>
+          <div class="space-y-10">
+            <div>
+              <span class="font-serif text-5xl md:text-6xl font-light text-white leading-none block">€20.000</span>
+              <span class="text-xs uppercase tracking-[0.18em] text-white/50 mt-3 block">Gemiddelde kosten per medewerker bij psychisch verzuim</span>
+            </div>
+            <div>
+              <span class="font-serif text-5xl md:text-6xl font-light text-white leading-none block">14+ wkn</span>
+              <span class="text-xs uppercase tracking-[0.18em] text-white/50 mt-3 block">Gemiddelde wachttijd reguliere GGZ in Nederland</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-10 md:p-12">
+          <p class="text-[0.65rem] uppercase tracking-[0.25em] text-[#6EC68A] mb-10">Met EigenKompas</p>
+          <div class="space-y-10">
+            <div>
+              <span class="font-serif text-5xl md:text-6xl font-light text-[#6EC68A] leading-none block">2 weken</span>
+              <span class="text-xs uppercase tracking-[0.18em] text-white/60 mt-3 block">Tot een gesprek met coach of psycholoog via ons netwerk</span>
+            </div>
+            <div>
+              <span class="font-serif text-5xl md:text-6xl font-light text-[#6EC68A] leading-none block">20-40%</span>
+              <span class="text-xs uppercase tracking-[0.18em] text-white/60 mt-3 block">Kortere verzuimduur door vroege interventie</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services (grid-of-cards) -->
+  <section id="services" class="py-24 px-6 md:px-16 bg-[#FAFAF8]">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-16">
+        <p class="text-xs uppercase tracking-[0.3em] text-[#2E5B40] mb-6">Onze diensten</p>
+        <h2 class="font-serif text-4xl md:text-5xl font-light text-[#1A1A2E] leading-[1.1] max-w-2xl tracking-tight">Drie heldere <em class="italic text-[#2E5B40]">dienstverleningsvormen.</em></h2>
+        <p class="mt-6 max-w-xl text-sm md:text-base text-[#1A1A2E]/70 font-light leading-loose">Afzonderlijk of in combinatie inzetbaar. Altijd passend bij jouw organisatie en vraagstuk.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-[1px] bg-[#E5E0D8] border border-[#E5E0D8]">
+        <div class="group bg-white p-12 hover:-translate-y-1 hover:bg-[#2E5B40] transition-all duration-300 flex flex-col h-full">
+          <span class="font-serif text-lg text-[#8B7251] group-hover:text-white transition-colors mb-8 block">01</span>
+          <h3 class="font-serif text-2xl text-[#1A1A2E] group-hover:text-white transition-colors mb-4 font-normal">Verzuimbegeleiding</h3>
+          <p class="text-sm text-[#6B7280] group-hover:text-white/80 leading-loose transition-colors font-light mb-7">Ondersteuning van organisatie, leidinggevenden en medewerkers, gericht op eigenaarschap.</p>
+          <ul class="space-y-3 mt-auto">
+            <li class="flex items-start gap-3 text-sm text-[#1A1A2E]/70 group-hover:text-white/80 transition-colors font-light"><iconify-icon icon="solar:check-circle-linear" class="text-[#2E5B40] group-hover:text-white transition-colors mt-0.5 shrink-0" width="16"></iconify-icon><span>Wet- en regelgeving, preventie &amp; re-integratie</span></li>
+            <li class="flex items-start gap-3 text-sm text-[#1A1A2E]/70 group-hover:text-white/80 transition-colors font-light"><iconify-icon icon="solar:check-circle-linear" class="text-[#2E5B40] group-hover:text-white transition-colors mt-0.5 shrink-0" width="16"></iconify-icon><span>Coaching in cultuur &amp; leiderschap</span></li>
+            <li class="flex items-start gap-3 text-sm text-[#1A1A2E]/70 group-hover:text-white/80 transition-colors font-light"><iconify-icon icon="solar:check-circle-linear" class="text-[#2E5B40] group-hover:text-white transition-colors mt-0.5 shrink-0" width="16"></iconify-icon><span>Begeleiding op maat voor jouw organisatie</span></li>
+          </ul>
+        </div>
+        <div class="group bg-white p-12 hover:-translate-y-1 hover:bg-[#2E5B40] transition-all duration-300 flex flex-col h-full">
+          <div class="flex items-center justify-between mb-8">
+            <span class="font-serif text-lg text-[#8B7251] group-hover:text-white transition-colors block">02</span>
+            <span class="text-[0.6rem] uppercase tracking-[0.2em] px-3 py-1.5 bg-[#2E5B40] text-white group-hover:bg-white group-hover:text-[#2E5B40] transition-colors">Meest gekozen</span>
+          </div>
+          <h3 class="font-serif text-2xl text-[#1A1A2E] group-hover:text-white transition-colors mb-4 font-normal">Combinatie bedrijfsarts &amp; adviseur</h3>
+          <p class="text-sm text-[#6B7280] group-hover:text-white/80 leading-loose transition-colors font-light mb-7">Medische expertise plus begeleiding op mens en organisatie, vanuit één visie op eigenaarschap. De kracht van twee specialisten, de eenvoud van één team.</p>
+          <ul class="space-y-3 mt-auto">
+            <li class="flex items-start gap-3 text-sm text-[#1A1A2E]/70 group-hover:text-white/80 transition-colors font-light"><iconify-icon icon="solar:check-circle-linear" class="text-[#2E5B40] group-hover:text-white transition-colors mt-0.5 shrink-0" width="16"></iconify-icon><span>Toegankelijkheid van de bedrijfsarts</span></li>
+            <li class="flex items-start gap-3 text-sm text-[#1A1A2E]/70 group-hover:text-white/80 transition-colors font-light"><iconify-icon icon="solar:check-circle-linear" class="text-[#2E5B40] group-hover:text-white transition-colors mt-0.5 shrink-0" width="16"></iconify-icon><span>Leidinggevende blijft eigenaar</span></li>
+            <li class="flex items-start gap-3 text-sm text-[#1A1A2E]/70 group-hover:text-white/80 transition-colors font-light"><iconify-icon icon="solar:check-circle-linear" class="text-[#2E5B40] group-hover:text-white transition-colors mt-0.5 shrink-0" width="16"></iconify-icon><span>Eén team, één gezamenlijke visie</span></li>
+          </ul>
+        </div>
+        <div class="group bg-white p-12 hover:-translate-y-1 hover:bg-[#2E5B40] transition-all duration-300 flex flex-col h-full">
+          <span class="font-serif text-lg text-[#8B7251] group-hover:text-white transition-colors mb-8 block">03</span>
+          <h3 class="font-serif text-2xl text-[#1A1A2E] group-hover:text-white transition-colors mb-4 font-normal">Consultancy</h3>
+          <p class="text-sm text-[#6B7280] group-hover:text-white/80 leading-loose transition-colors font-light mb-7">Strategisch advies voor organisaties die structureel willen verbeteren en professionaliseren op het gebied van algemene bedrijfsvraagstukken.</p>
+          <ul class="space-y-3 mt-auto">
+            <li class="flex items-start gap-3 text-sm text-[#1A1A2E]/70 group-hover:text-white/80 transition-colors font-light"><iconify-icon icon="solar:check-circle-linear" class="text-[#2E5B40] group-hover:text-white transition-colors mt-0.5 shrink-0" width="16"></iconify-icon><span>Luisteren en inventariseren</span></li>
+            <li class="flex items-start gap-3 text-sm text-[#1A1A2E]/70 group-hover:text-white/80 transition-colors font-light"><iconify-icon icon="solar:check-circle-linear" class="text-[#2E5B40] group-hover:text-white transition-colors mt-0.5 shrink-0" width="16"></iconify-icon><span>Adviseren voor verbeteringen</span></li>
+            <li class="flex items-start gap-3 text-sm text-[#1A1A2E]/70 group-hover:text-white/80 transition-colors font-light"><iconify-icon icon="solar:check-circle-linear" class="text-[#2E5B40] group-hover:text-white transition-colors mt-0.5 shrink-0" width="16"></iconify-icon><span>Implementatie ondersteunen</span></li>
+          </ul>
+        </div>
+      </div>
+      <a href="#contact" class="group block bg-[#2E5B40] hover:bg-[#1B2D4F] transition-all duration-300 px-10 md:px-12 py-7 md:py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div>
+          <h3 class="font-serif text-2xl md:text-3xl text-white font-normal">Klaar om te starten?</h3>
+          <p class="text-sm text-white/80 font-light leading-loose mt-2 max-w-xl">Plan een vrijblijvende kennismaking. We luisteren naar je vraag en denken met je mee over de beste route.</p>
+        </div>
+        <span class="shrink-0 inline-flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-white">Plan een kennismaking <iconify-icon icon="solar:arrow-right-linear" width="18"></iconify-icon></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Testimonials (light) -->
+  <section class="bg-[#F5F1EB] py-24 px-6 md:px-16">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-16"><p class="text-xs uppercase tracking-[0.3em] text-[#2E5B40] mb-6">Ervaringen</p><h2 class="font-serif text-4xl md:text-5xl font-light text-[#1A1A2E] leading-[1.1] tracking-tight">Wat onze <em class="italic text-[#2E5B40]">klanten zeggen.</em></h2></div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="border border-[#E5E0D8] bg-white p-10 hover:border-[#2E5B40]/40 transition-colors duration-300 flex flex-col"><div class="font-serif text-5xl text-[#2E5B40] opacity-50 leading-none mb-6">&ldquo;</div><p class="font-serif text-lg font-light italic text-[#1A1A2E] leading-relaxed mb-8 flex-grow">Waar we eerder maanden moesten wachten, zat onze medewerker binnen twee weken bij een psycholoog. Dat gaf direct rust, voor de medewerker én voor ons als team.</p><div class="mt-auto"><p class="text-[0.65rem] uppercase tracking-[0.2em] text-[#2E5B40]">HR-manager</p><p class="text-[0.6rem] uppercase tracking-widest text-[#6B7280] mt-1">Productiebedrijf</p></div></div>
+        <div class="border border-[#E5E0D8] bg-white p-10 hover:border-[#2E5B40]/40 transition-colors duration-300 flex flex-col"><div class="font-serif text-5xl text-[#2E5B40] opacity-50 leading-none mb-6">&ldquo;</div><p class="font-serif text-lg font-light italic text-[#1A1A2E] leading-relaxed mb-8 flex-grow">Eén vast aanspreekpunt dat zowel de medische als de menselijke kant begrijpt. Geen doorverbinden, geen standaardadvies, maar echt meedenken.</p><div class="mt-auto"><p class="text-[0.65rem] uppercase tracking-[0.2em] text-[#2E5B40]">Leidinggevende</p><p class="text-[0.6rem] uppercase tracking-widest text-[#6B7280] mt-1">Zorgorganisatie</p></div></div>
+        <div class="border border-[#E5E0D8] bg-white p-10 hover:border-[#2E5B40]/40 transition-colors duration-300 flex flex-col"><div class="font-serif text-5xl text-[#2E5B40] opacity-50 leading-none mb-6">&ldquo;</div><p class="font-serif text-lg font-light italic text-[#1A1A2E] leading-relaxed mb-8 flex-grow">EigenKompas keek verder dan de klacht en pakte de oorzaak aan. Ons verzuim daalde duurzaam en de rust in het team kwam terug.</p><div class="mt-auto"><p class="text-[0.65rem] uppercase tracking-[0.2em] text-[#2E5B40]">Directeur</p><p class="text-[0.6rem] uppercase tracking-widest text-[#6B7280] mt-1">MKB-dienstverlener</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Over EigenKompas -->
+  <section id="over" class="py-24 px-6 md:px-16 border-t border-[#E5E0D8] bg-[#FAFAF8]">
+    <div class="max-w-7xl mx-auto">
+      <p class="text-xs uppercase tracking-[0.3em] text-[#2E5B40] mb-6">Over EigenKompas</p>
+      <h2 class="font-serif text-4xl md:text-5xl font-light text-[#1A1A2E] leading-[1.1] tracking-tight mb-14">Wij geloven in mensen <em class="italic text-[#2E5B40]">én in mogelijkheden.</em></h2>
+      <!-- Verhaal -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div class="lg:col-span-5">
+          <figure class="overflow-hidden border border-[#E5E0D8]">
+            <img src="assets/img/team/team.jpg" alt="Het team van EigenKompas" class="w-full h-auto object-cover block" onerror="this.closest('figure').style.display='none'">
+          </figure>
+        </div>
+        <div class="lg:col-span-7 space-y-6">
+          <p class="text-sm md:text-base text-[#1A1A2E]/70 font-light leading-loose">EigenKompas is ontstaan vanuit een duidelijke overtuiging: verzuimbegeleiding kan persoonlijker en effectiever. Wij zijn een hecht team van adviseurs verzuim, cultuur &amp; leiderschap en bedrijfsartsen: twee specialismen met één gezamenlijke visie.</p>
+          <p class="text-sm md:text-base text-[#1A1A2E]/70 font-light leading-loose">Waar traditionele arbodiensten vaak afstandelijk en bureaucratisch opereren, kiezen wij bewust voor korte lijnen, direct contact en een aanpak waarbij de mens, niet het dossier, centraal staat.</p>
+          <div class="border-l-2 border-[#2E5B40] pl-6 py-1 mt-2">
+            <p class="text-[0.7rem] uppercase tracking-[0.22em] text-[#2E5B40] mb-3">Eigenaarschap als kernwaarde</p>
+            <p class="text-sm md:text-base text-[#1A1A2E]/70 font-light leading-loose">Een duurzame oplossing begint bij eigenaarschap: bij de organisatie, de leidinggevende en de medewerker. Wij helpen je de juiste koers te vinden en vast te houden. Geen kant-en-klare oplossingen, maar begeleiding die aansluit bij wie je bent en wat jouw situatie vraagt. <span class="text-[#1A1A2E] font-normal italic">Jij bepaalt de richting.</span></p>
+          </div>
+          <div class="space-y-5 pt-6 mt-2 border-t border-[#E5E0D8]">
+            <div class="flex items-start gap-4">
+              <iconify-icon icon="solar:heart-angle-linear" class="text-[#2E5B40] mt-1 shrink-0" width="22"></iconify-icon>
+              <div>
+                <h3 class="font-serif text-lg text-[#1A1A2E] font-normal">Persoonlijk en betrokken</h3>
+                <p class="text-sm text-[#6B7280] font-light leading-relaxed">We luisteren, begrijpen en staan naast je.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <iconify-icon icon="solar:medal-ribbon-linear" class="text-[#2E5B40] mt-1 shrink-0" width="22"></iconify-icon>
+              <div>
+                <h3 class="font-serif text-lg text-[#1A1A2E] font-normal">Deskundig en ervaren</h3>
+                <p class="text-sm text-[#6B7280] font-light leading-relaxed">Jarenlange ervaring in verzuim, HR en organisatieontwikkeling.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <iconify-icon icon="solar:target-linear" class="text-[#2E5B40] mt-1 shrink-0" width="22"></iconify-icon>
+              <div>
+                <h3 class="font-serif text-lg text-[#1A1A2E] font-normal">Praktisch en resultaatgericht</h3>
+                <p class="text-sm text-[#6B7280] font-light leading-relaxed">We maken het concreet en zorgen voor beweging.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pijlers (omkaderde band) -->
+      <div class="mt-16">
+        <p class="text-xs uppercase tracking-[0.3em] text-[#2E5B40] mb-8">Onze pijlers</p>
+        <div class="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-[#E5E0D8] border border-[#E5E0D8] bg-white">
+          <div class="p-8 hover:bg-[#F5F1EB] transition-colors duration-300">
+            <h3 class="font-serif text-2xl md:text-3xl text-[#1A1A2E] font-normal mb-3">Eigenaarschap</h3>
+            <p class="text-sm text-[#6B7280] font-light leading-loose">Mensen in beweging brengen.</p>
+          </div>
+          <div class="p-8 hover:bg-[#F5F1EB] transition-colors duration-300">
+            <h3 class="font-serif text-2xl md:text-3xl text-[#1A1A2E] font-normal mb-3">Autonomie</h3>
+            <p class="text-sm text-[#6B7280] font-light leading-loose">Ruimte voor vertrouwen en regie.</p>
+          </div>
+          <div class="p-8 hover:bg-[#F5F1EB] transition-colors duration-300">
+            <h3 class="font-serif text-2xl md:text-3xl text-[#1A1A2E] font-normal mb-3">Regie</h3>
+            <p class="text-sm text-[#6B7280] font-light leading-loose">Rust, overzicht en structuur.</p>
+          </div>
+          <div class="p-8 hover:bg-[#F5F1EB] transition-colors duration-300">
+            <h3 class="font-serif text-2xl md:text-3xl text-[#1A1A2E] font-normal mb-3">Ontwikkeling</h3>
+            <p class="text-sm text-[#6B7280] font-light leading-loose">Duurzame groei voor mens en organisatie.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team -->
+      <div class="mt-20">
+        <p class="text-xs uppercase tracking-[0.3em] text-[#2E5B40] mb-10">De oprichters</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl">
+          <div class="group bg-white border border-[#E5E0D8] p-6 flex items-center gap-6">
+            <div class="w-24 h-28 shrink-0 bg-[#F5F1EB] flex items-center justify-center overflow-hidden relative">
+              <iconify-icon icon="solar:user-rounded-linear" class="text-[#8B7251]/40" width="40"></iconify-icon>
+              <img src="assets/img/team/tim-priester.jpg" alt="Tim Priester" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='"'"'none'"'"'">
+            </div>
+            <div class="min-w-0">
+              <h4 class="font-serif text-xl text-[#1A1A2E] font-normal leading-tight">Tim Priester</h4>
+              <p class="text-[0.6rem] uppercase tracking-[0.2em] text-[#2E5B40] mt-2 leading-relaxed">Adviseur verzuim, cultuur &amp; leiderschap</p>
+              <a href="https://www.linkedin.com/in/timpriester/" target="_blank" rel="noopener" aria-label="LinkedIn-profiel van Tim Priester" class="inline-flex items-center gap-1.5 text-[#6B7280] hover:text-[#2E5B40] transition-colors mt-3 text-[0.65rem] uppercase tracking-[0.18em]"><iconify-icon icon="mdi:linkedin" width="18"></iconify-icon> LinkedIn</a>
+            </div>
+          </div>
+          <div class="group bg-white border border-[#E5E0D8] p-6 flex items-center gap-6">
+            <div class="w-24 h-28 shrink-0 bg-[#F5F1EB] flex items-center justify-center overflow-hidden relative">
+              <iconify-icon icon="solar:user-rounded-linear" class="text-[#8B7251]/40" width="40"></iconify-icon>
+              <img src="assets/img/team/andy-firmansyah.jpg" alt="Andy Firmansyah" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'">
+            </div>
+            <div class="min-w-0">
+              <h4 class="font-serif text-xl text-[#1A1A2E] font-normal leading-tight">Andy Firmansyah</h4>
+              <p class="text-[0.6rem] uppercase tracking-[0.2em] text-[#2E5B40] mt-2 leading-relaxed">Bedrijfsarts</p>
+              <a href="https://nl.linkedin.com/in/andy-firmansyah-1b183b413" target="_blank" rel="noopener" aria-label="LinkedIn-profiel van Andy Firmansyah" class="inline-flex items-center gap-1.5 text-[#6B7280] hover:text-[#2E5B40] transition-colors mt-3 text-[0.65rem] uppercase tracking-[0.18em]"><iconify-icon icon="mdi:linkedin" width="18"></iconify-icon> LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Kennismaking -->
+  <section id="contact" class="py-24 px-6 md:px-16 bg-[#F5F1EB] border-t border-[#E5E0D8]">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <p class="text-xs uppercase tracking-[0.3em] text-[#2E5B40] mb-6">Neem vrijblijvend contact op</p>
+        <h2 class="font-serif text-4xl md:text-5xl font-light text-[#1A1A2E] leading-[1.1] tracking-tight">Klaar om te <em class="italic text-[#2E5B40]">starten?</em></h2>
+        <p class="mt-6 text-sm md:text-base text-[#1A1A2E]/70 font-light leading-loose max-w-md">Plan een vrijblijvende kennismaking. We luisteren naar je vraag en denken met je mee over de beste route.</p>
+        <div class="mt-10 space-y-4">
+          <a href="tel:0623525948" class="flex items-center gap-4 text-sm text-[#1A1A2E] hover:text-[#2E5B40] transition-colors group">
+            <span class="w-10 h-10 shrink-0 border border-[#E5E0D8] flex items-center justify-center group-hover:border-[#2E5B40] transition-colors"><iconify-icon icon="solar:phone-linear" class="text-[#2E5B40]" width="18"></iconify-icon></span>
+            06 23 52 59 48
+          </a>
+          <a href="mailto:info@eigenkompas.nl" class="flex items-center gap-4 text-sm text-[#1A1A2E] hover:text-[#2E5B40] transition-colors group">
+            <span class="w-10 h-10 shrink-0 border border-[#E5E0D8] flex items-center justify-center group-hover:border-[#2E5B40] transition-colors"><iconify-icon icon="solar:letter-linear" class="text-[#2E5B40]" width="18"></iconify-icon></span>
+            info@eigenkompas.nl
+          </a>
+        </div>
+        <div class="mt-10 pt-8 border-t border-[#E5E0D8] grid grid-cols-2 gap-x-6 gap-y-4">
+          <div class="flex items-center gap-2.5 text-xs uppercase tracking-[0.13em] text-[#6B7280]"><iconify-icon icon="solar:buildings-2-linear" class="text-[#2E5B40] shrink-0" width="18"></iconify-icon> KvK 94411212</div>
+        </div>
+      </div>
+      <div class="lg:col-span-7">
+        <form id="kennismaking-form" class="bg-white border border-[#E5E0D8] p-8 md:p-10 space-y-6" novalidate>
+          <input type="hidden" name="access_key" value="VUL-HIER-JE-WEB3FORMS-ACCESS-KEY-IN">
+          <input type="hidden" name="subject" value="Nieuwe kennismakingsaanvraag via de EigenKompas-website">
+          <input type="hidden" name="from_name" value="EigenKompas website">
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" class="hidden" style="display:none" aria-hidden="true">
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div>
+              <label for="naam" class="block text-[0.65rem] uppercase tracking-[0.18em] text-[#1A1A2E] mb-2">Naam <span class="text-[#2E5B40]">*</span></label>
+              <input id="naam" name="naam" type="text" required class="w-full bg-[#FAFAF8] border border-[#E5E0D8] px-4 py-3.5 text-sm text-[#1A1A2E] placeholder:text-[#6B7280]/60 focus:border-[#2E5B40] focus:outline-none transition-colors" placeholder="Voor- en achternaam">
+            </div>
+            <div>
+              <label for="organisatie" class="block text-[0.65rem] uppercase tracking-[0.18em] text-[#1A1A2E] mb-2">Organisatie</label>
+              <input id="organisatie" name="organisatie" type="text" class="w-full bg-[#FAFAF8] border border-[#E5E0D8] px-4 py-3.5 text-sm text-[#1A1A2E] placeholder:text-[#6B7280]/60 focus:border-[#2E5B40] focus:outline-none transition-colors" placeholder="Bedrijfsnaam">
+            </div>
+            <div>
+              <label for="email" class="block text-[0.65rem] uppercase tracking-[0.18em] text-[#1A1A2E] mb-2">E-mailadres <span class="text-[#2E5B40]">*</span></label>
+              <input id="email" name="email" type="email" required class="w-full bg-[#FAFAF8] border border-[#E5E0D8] px-4 py-3.5 text-sm text-[#1A1A2E] placeholder:text-[#6B7280]/60 focus:border-[#2E5B40] focus:outline-none transition-colors" placeholder="naam@organisatie.nl">
+            </div>
+            <div>
+              <label for="telefoon" class="block text-[0.65rem] uppercase tracking-[0.18em] text-[#1A1A2E] mb-2">Telefoonnummer</label>
+              <input id="telefoon" name="telefoon" type="tel" class="w-full bg-[#FAFAF8] border border-[#E5E0D8] px-4 py-3.5 text-sm text-[#1A1A2E] placeholder:text-[#6B7280]/60 focus:border-[#2E5B40] focus:outline-none transition-colors" placeholder="06 12 34 56 78">
+            </div>
+          </div>
+          <div>
+            <label for="bericht" class="block text-[0.65rem] uppercase tracking-[0.18em] text-[#1A1A2E] mb-2">Je vraag of situatie <span class="text-[#6B7280] normal-case tracking-normal">(optioneel)</span></label>
+            <textarea id="bericht" name="bericht" rows="4" class="w-full bg-[#FAFAF8] border border-[#E5E0D8] px-4 py-3.5 text-sm text-[#1A1A2E] placeholder:text-[#6B7280]/60 focus:border-[#2E5B40] focus:outline-none transition-colors resize-none" placeholder="Vertel kort waar je tegenaan loopt"></textarea>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:items-center gap-4 pt-2">
+            <button type="submit" class="px-9 py-5 bg-[#2E5B40] text-white text-xs font-normal tracking-[0.2em] uppercase border border-[#2E5B40] hover:bg-transparent hover:text-[#2E5B40] transition-all duration-300 inline-flex items-center justify-center gap-3">Verstuur aanvraag <iconify-icon icon="solar:arrow-right-linear" width="16"></iconify-icon></button>
+            <p class="text-xs text-[#6B7280] font-light">We reageren binnen één werkdag.</p>
+          </div>
+        </form>
+        <div id="kennismaking-success" class="hidden bg-white border border-[#2E5B40]/40 p-10 md:p-12 text-center">
+          <iconify-icon icon="solar:check-circle-linear" class="text-[#2E5B40]" width="44"></iconify-icon>
+          <h3 class="font-serif text-2xl text-[#1A1A2E] mt-4 mb-2 font-normal">Aanvraag ontvangen</h3>
+          <p class="text-sm text-[#6B7280] font-light">We nemen binnen één werkdag contact met je op.</p>
+        </div>
+        <div id="kennismaking-error" class="hidden mt-4 border border-[#8B7251]/50 bg-[#8B7251]/10 p-4 text-sm text-[#1A1A2E]/80 font-light">Er is iets misgegaan. Probeer het opnieuw of mail ons direct op <a href="mailto:info@eigenkompas.nl" class="text-[#2E5B40] underline">info@eigenkompas.nl</a>.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer" class="bg-[#1B2D4F] pt-24 pb-10 px-6 md:px-16 text-white">
+    <div class="max-w-7xl mx-auto border-b border-white/10 pb-16 mb-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+        <div class="lg:col-span-5 space-y-5">
+          <a href="#" class="flex items-center gap-3 font-serif text-xl md:text-2xl font-normal tracking-[0.12em] text-white uppercase">
+            <svg viewBox="0 0 64 64" class="w-8 h-8 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><polygon points="32,32 32,4 40,24" fill="#6EC68A"/><polygon points="32,32 40,24 60,32" fill="#FFFFFF"/><polygon points="32,32 60,32 40,40" fill="#6EC68A"/><polygon points="32,32 40,40 32,60" fill="#FFFFFF"/><polygon points="32,32 32,60 24,40" fill="#6EC68A"/><polygon points="32,32 24,40 4,32" fill="#FFFFFF"/><polygon points="32,32 4,32 24,24" fill="#6EC68A"/><polygon points="32,32 24,24 32,4" fill="#FFFFFF"/><circle cx="32" cy="32" r="3.2" fill="#1B2D4F"/></svg>
+            <span>EIGEN<span class="italic font-light normal-case text-lg">kompas</span></span>
+          </a>
+          <p class="text-[0.65rem] uppercase tracking-[0.25em] text-[#6EC68A]">Rust · Regie · Ontwikkeling</p>
+          <p class="text-sm text-white/50 font-light leading-loose max-w-sm">Wij helpen organisaties koers houden met rust, regie en structuur. Zodat er ruimte is voor mensen en groei.</p>
+          <div class="pt-4"><a href="#contact" class="inline-block px-9 py-5 bg-white text-[#2E5B40] text-xs font-normal tracking-[0.2em] uppercase border border-white hover:bg-transparent hover:text-white transition-all duration-300">Plan een kennismaking</a></div>
+        </div>
+        <div class="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-10">
+          <div>
+            <h4 class="text-[0.65rem] uppercase tracking-[0.25em] text-[#6EC68A] mb-8">Navigatie</h4>
+            <ul class="space-y-4 text-sm font-light">
+              <li><a href="#" class="text-white/50 hover:text-white transition-colors">Home</a></li>
+              <li><a href="#werkgevers" class="text-white/50 hover:text-white transition-colors">Voor werkgevers</a></li>
+              <li><a href="#werkwijze" class="text-white/50 hover:text-white transition-colors">Werkwijze</a></li>
+              <li><a href="#over" class="text-white/50 hover:text-white transition-colors">Over ons</a></li>
+              <li><a href="#contact" class="text-white/50 hover:text-white transition-colors">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-[0.65rem] uppercase tracking-[0.25em] text-[#6EC68A] mb-8">Diensten</h4>
+            <ul class="space-y-4 text-sm font-light">
+              <li><a href="#services" class="text-white/50 hover:text-white transition-colors">Verzuimbegeleiding</a></li>
+              <li><a href="#services" class="text-white/50 hover:text-white transition-colors">Bedrijfsarts &amp; adviseur</a></li>
+              <li><a href="#services" class="text-white/50 hover:text-white transition-colors">Consultancy</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-[0.65rem] uppercase tracking-[0.25em] text-[#6EC68A] mb-8">Contact</h4>
+            <ul class="space-y-4 text-sm font-light">
+              <li><a href="tel:0623525948" class="text-white/50 hover:text-white transition-colors">06 23 52 59 48</a></li>
+              <li><a href="mailto:info@eigenkompas.nl" class="text-white/50 hover:text-white transition-colors">info@eigenkompas.nl</a></li>
+              <li><a href="#contact" class="text-white/50 hover:text-white transition-colors">Contactformulier</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <p class="text-xs text-white/30 tracking-wide font-light">© 2026 EigenKompas · Alle rechten voorbehouden</p>
+      <div class="flex space-x-8"><a href="#" class="text-[0.65rem] uppercase tracking-[0.18em] text-white/40 hover:text-white transition-colors">Privacyverklaring</a><a href="#" class="text-[0.65rem] uppercase tracking-[0.18em] text-white/40 hover:text-white transition-colors">Algemene voorwaarden</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // UI-demo: toont bevestiging na verzturen. Echte e-mailverzending wordt hierna gekoppeld.
+    (function () {
+      var f = document.getElementById('kennismaking-form');
+      if (!f) return;
+      f.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!f.checkValidity()) { f.reportValidity(); return; }
+        var btn = f.querySelector('button[type=submit]');
+        var err = document.getElementById('kennismaking-error');
+        if (err) err.classList.add('hidden');
+        if (btn) btn.disabled = true;
+        fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(f) })
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            if (!data.success) throw new Error();
+            f.style.display = 'none';
+            var s = document.getElementById('kennismaking-success');
+            if (s) { s.classList.remove('hidden'); s.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+          })
+          .catch(function () {
+            if (btn) btn.disabled = false;
+            if (err) err.classList.remove('hidden');
+          });
+      });
+    })();
+
+    // Mobiel menu: open/sluit + sluit na klik op een link
+    (function () {
+      var t = document.getElementById('menu-toggle');
+      var m = document.getElementById('mobile-menu');
+      if (!t || !m) return;
+      t.addEventListener('click', function () {
+        var open = m.classList.toggle('hidden') === false;
+        t.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      m.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          m.classList.add('hidden');
+          t.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+
+    // Subtiele scroll-reveal
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (!('IntersectionObserver' in window)) return;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+      var nodes = document.querySelectorAll('section .mb-16, section .mb-14, .grid > div, .grid > a, #services .max-w-7xl > a');
+      nodes.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight * 0.9) return; // al in beeld: niet verbergen
+        el.classList.add('reveal');
+        io.observe(el);
+      });
+      // lichte stagger binnen grids
+      document.querySelectorAll('.grid').forEach(function (grid) {
+        var i = 0;
+        Array.prototype.forEach.call(grid.children, function (c) {
+          if (c.classList && c.classList.contains('reveal')) { c.style.transitionDelay = ((i % 4) * 80) + 'ms'; i++; }
+        });
+      });
+    })();
+  </script>
+</body></html>
