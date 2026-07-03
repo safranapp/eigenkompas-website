@@ -600,10 +600,16 @@
           if (href.charAt(0) === '#') {
             e.preventDefault();
             closeMenu();
-            // wacht tot het menu is ingeklapt, scroll dan netjes (respecteert scroll-margin-top)
+            // wacht tot het menu is ingeklapt, bereken dan de offset o.b.v. de echte nav-hoogte
             setTimeout(function () {
-              if (href === '#') { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-              else { var target = document.getElementById(href.slice(1)); if (target) target.scrollIntoView({ behavior: 'smooth' }); }
+              var nav = document.querySelector('nav');
+              var offset = (nav ? nav.offsetHeight : 76) + 8;
+              var top = 0;
+              if (href !== '#') {
+                var target = document.getElementById(href.slice(1));
+                if (target) top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+              }
+              window.scrollTo({ top: top, behavior: 'smooth' });
             }, 320);
           } else {
             closeMenu();
