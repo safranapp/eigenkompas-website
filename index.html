@@ -95,23 +95,25 @@
 
 
   <!-- Navigation -->
-  <nav class="sticky top-0 z-50 w-full px-6 md:px-16 py-6 flex justify-between items-center bg-[#FAFAF8]/90 backdrop-blur-xl border-b border-[#E5E0D8] transition-all duration-300">
-    <a href="#" class="flex items-center gap-2.5 font-serif text-lg md:text-xl font-normal tracking-[0.12em] text-[#1A1A2E] uppercase">
-      <svg viewBox="0 0 64 64" class="w-7 h-7 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><polygon points="32,32 32,4 40,24" fill="#2E5B40"/><polygon points="32,32 40,24 60,32" fill="#6EC68A"/><polygon points="32,32 60,32 40,40" fill="#2E5B40"/><polygon points="32,32 40,40 32,60" fill="#6EC68A"/><polygon points="32,32 32,60 24,40" fill="#2E5B40"/><polygon points="32,32 24,40 4,32" fill="#6EC68A"/><polygon points="32,32 4,32 24,24" fill="#2E5B40"/><polygon points="32,32 24,24 32,4" fill="#6EC68A"/><circle cx="32" cy="32" r="3.2" fill="#1B2D4F"/></svg>
-      <span>EIGEN<span class="italic font-light normal-case text-base">kompas</span></span>
-    </a>
-    <div class="hidden lg:flex items-center space-x-8 text-xs font-normal tracking-[0.18em] text-[#1A1A2E] uppercase">
-      <a href="#werkgevers" class="hover:opacity-60 transition-opacity relative group pb-1">Voor werkgevers<span class="absolute bottom-0 left-0 w-0 h-[1px] bg-[#2E5B40] transition-all duration-300 group-hover:w-full"></span></a>
-      <a href="#werkwijze" class="hover:opacity-60 transition-opacity relative group pb-1">Werkwijze<span class="absolute bottom-0 left-0 w-0 h-[1px] bg-[#2E5B40] transition-all duration-300 group-hover:w-full"></span></a>
-      <a href="#services" class="hover:opacity-60 transition-opacity relative group pb-1">Diensten<span class="absolute bottom-0 left-0 w-0 h-[1px] bg-[#2E5B40] transition-all duration-300 group-hover:w-full"></span></a>
-      <a href="#over" class="hover:opacity-60 transition-opacity relative group pb-1">Over ons<span class="absolute bottom-0 left-0 w-0 h-[1px] bg-[#2E5B40] transition-all duration-300 group-hover:w-full"></span></a>
-      <a href="#contact" class="hover:opacity-60 transition-opacity relative group pb-1">Contact<span class="absolute bottom-0 left-0 w-0 h-[1px] bg-[#2E5B40] transition-all duration-300 group-hover:w-full"></span></a>
-      <a href="#contact" class="ml-2 px-8 py-4 bg-[#2E5B40] text-white border border-[#2E5B40] hover:bg-transparent hover:text-[#2E5B40] transition-all duration-300">Plan een kennismaking</a>
+  <nav class="sticky top-0 z-50 w-full bg-[#FAFAF8]/90 backdrop-blur-xl border-b border-[#E5E0D8] transition-all duration-300">
+    <div class="px-6 md:px-16 py-6 flex justify-between items-center">
+      <a href="#" class="flex items-center gap-2.5 font-serif text-lg md:text-xl font-normal tracking-[0.12em] text-[#1A1A2E] uppercase">
+        <svg viewBox="0 0 64 64" class="w-7 h-7 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><polygon points="32,32 32,4 40,24" fill="#2E5B40"/><polygon points="32,32 40,24 60,32" fill="#6EC68A"/><polygon points="32,32 60,32 40,40" fill="#2E5B40"/><polygon points="32,32 40,40 32,60" fill="#6EC68A"/><polygon points="32,32 32,60 24,40" fill="#2E5B40"/><polygon points="32,32 24,40 4,32" fill="#6EC68A"/><polygon points="32,32 4,32 24,24" fill="#2E5B40"/><polygon points="32,32 24,24 32,4" fill="#6EC68A"/><circle cx="32" cy="32" r="3.2" fill="#1B2D4F"/></svg>
+        <span>EIGEN<span class="italic font-light normal-case text-base">kompas</span></span>
+      </a>
+      <div class="hidden lg:flex items-center space-x-8 text-xs font-normal tracking-[0.18em] text-[#1A1A2E] uppercase">
+        <a href="#werkgevers" class="hover:opacity-60 transition-opacity relative group pb-1">Voor werkgevers<span class="absolute bottom-0 left-0 w-0 h-[1px] bg-[#2E5B40] transition-all duration-300 group-hover:w-full"></span></a>
+        <a href="#werkwijze" class="hover:opacity-60 transition-opacity relative group pb-1">Werkwijze<span class="absolute bottom-0 left-0 w-0 h-[1px] bg-[#2E5B40] transition-all duration-300 group-hover:w-full"></span></a>
+        <a href="#services" class="hover:opacity-60 transition-opacity relative group pb-1">Diensten<span class="absolute bottom-0 left-0 w-0 h-[1px] bg-[#2E5B40] transition-all duration-300 group-hover:w-full"></span></a>
+        <a href="#over" class="hover:opacity-60 transition-opacity relative group pb-1">Over ons<span class="absolute bottom-0 left-0 w-0 h-[1px] bg-[#2E5B40] transition-all duration-300 group-hover:w-full"></span></a>
+        <a href="#contact" class="hover:opacity-60 transition-opacity relative group pb-1">Contact<span class="absolute bottom-0 left-0 w-0 h-[1px] bg-[#2E5B40] transition-all duration-300 group-hover:w-full"></span></a>
+        <a href="#contact" class="ml-2 px-8 py-4 bg-[#2E5B40] text-white border border-[#2E5B40] hover:bg-transparent hover:text-[#2E5B40] transition-all duration-300">Plan een kennismaking</a>
+      </div>
+      <button id="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu openen" class="lg:hidden text-[#1A1A2E] flex items-center justify-center"><iconify-icon icon="solar:hamburger-menu-linear" width="28" height="28"></iconify-icon></button>
     </div>
-    <button id="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu openen" class="lg:hidden text-[#1A1A2E] flex items-center justify-center"><iconify-icon icon="solar:hamburger-menu-linear" width="28" height="28"></iconify-icon></button>
-    <!-- Mobiel menu -->
-    <div id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 right-0 bg-[#FAFAF8] border-b border-[#E5E0D8] px-6 py-8 shadow-lg shadow-[#1B2D4F]/5">
-      <div class="flex flex-col space-y-6 text-xs font-normal tracking-[0.18em] text-[#1A1A2E] uppercase">
+    <!-- Mobiel menu: schuift open en duwt de scheidslijn naar beneden -->
+    <div id="mobile-menu" class="lg:hidden overflow-hidden max-h-0 transition-[max-height] duration-300 ease-in-out">
+      <div class="px-6 pb-8 pt-1 flex flex-col space-y-6 text-xs font-normal tracking-[0.18em] text-[#1A1A2E] uppercase">
         <a href="#werkgevers" class="hover:text-[#2E5B40] transition-colors">Voor werkgevers</a>
         <a href="#werkwijze" class="hover:text-[#2E5B40] transition-colors">Werkwijze</a>
         <a href="#services" class="hover:text-[#2E5B40] transition-colors">Diensten</a>
@@ -586,15 +588,15 @@
       var t = document.getElementById('menu-toggle');
       var m = document.getElementById('mobile-menu');
       if (!t || !m) return;
+      function closeMenu() { m.style.maxHeight = '0px'; t.setAttribute('aria-expanded', 'false'); }
+      function openMenu() { m.style.maxHeight = m.scrollHeight + 'px'; t.setAttribute('aria-expanded', 'true'); }
       t.addEventListener('click', function () {
-        var open = m.classList.toggle('hidden') === false;
-        t.setAttribute('aria-expanded', open ? 'true' : 'false');
+        var isOpen = m.style.maxHeight && m.style.maxHeight !== '0px';
+        if (isOpen) closeMenu(); else openMenu();
       });
-      m.querySelectorAll('a').forEach(function (a) {
-        a.addEventListener('click', function () {
-          m.classList.add('hidden');
-          t.setAttribute('aria-expanded', 'false');
-        });
+      m.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
+      window.addEventListener('resize', function () {
+        if (m.style.maxHeight && m.style.maxHeight !== '0px') m.style.maxHeight = m.scrollHeight + 'px';
       });
     })();
 
