@@ -594,7 +594,22 @@
         var isOpen = m.style.maxHeight && m.style.maxHeight !== '0px';
         if (isOpen) closeMenu(); else openMenu();
       });
-      m.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
+      m.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          var href = a.getAttribute('href') || '';
+          if (href.charAt(0) === '#') {
+            e.preventDefault();
+            closeMenu();
+            // wacht tot het menu is ingeklapt, scroll dan netjes (respecteert scroll-margin-top)
+            setTimeout(function () {
+              if (href === '#') { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+              else { var target = document.getElementById(href.slice(1)); if (target) target.scrollIntoView({ behavior: 'smooth' }); }
+            }, 320);
+          } else {
+            closeMenu();
+          }
+        });
+      });
       window.addEventListener('resize', function () {
         if (m.style.maxHeight && m.style.maxHeight !== '0px') m.style.maxHeight = m.scrollHeight + 'px';
       });
